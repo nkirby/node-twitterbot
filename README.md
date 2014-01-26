@@ -4,8 +4,6 @@ A simple way to build Twitter Bots using NodeJS, NPM and a handful of modules
 
 ## Installation
 
-It's not on NPM yet, but when it is
-
     npm install node-twitterbot
 
 ### Status
@@ -35,6 +33,8 @@ After that, the TwitterBot constructor either needs an object containing the con
 
     var Bot = new TwitterBot("path-to-config.json");
   
+See more about the [TwitterBot class here](https://github.com/nkirby/node-twitterbot/wiki/TwitterBot "TwitterBot Wiki")
+
 ## Actions
 
 In order to get your node-twitterbot to actually do something, you need to define actions. It is done through the addAction() method. It takes 2 parameters:
@@ -67,6 +67,8 @@ But you will rarely need to directly hold onto the tweetAction directly. You can
     Bot.actionWithName("tweet");
 
 Which will return the TwitterBotAction object, or null if the name is invalid (or the action already removed)
+
+See more about the [TwitterBotAction class here](https://github.com/nkirby/node-twitterbot/wiki/TwitterBotAction "TwitterBotAction Wiki")
 
 ### Grouping Actions
 
@@ -104,7 +106,6 @@ You can then get a random action, taking the action weights into account, by cal
     
     Bot.randomWeightedAction("tweet posting");
     
-See more about the TwitterBotAction class here
 
 ## Streaming
 
