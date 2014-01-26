@@ -40,15 +40,21 @@ In order to get your node-twitterbot to actually do something, you need to defin
 
 So our addAction method might look like this:
 
-    Bot.addAction("tweet", function(twitter) {
+    Bot.addAction("tweet", function(twitter, action, tweet) {
       Bot.tweet("I'm posting a tweet!");
     });
     
 The twitter variable passed into the function is the [Twit](https://github.com/ttezel/twit/ "Twit on Github") object associated with a given node-twitterbot, and can be managed directly. The same Twit object is available as [TwitterBot].twitter as well.
 
+The action variable passed into the function is the TwitterBotAction created by addAction.
+
+And the tweet object is the tweet passed into the action (if there was one)
+
+### TwitterBotActions
+
 addAction() returns a TwitterBotAction object. 
 
-    var tweetAction = Bot.addAction("tweet", function(twitter) {
+    var tweetAction = Bot.addAction("tweet", function(twitter, action, tweet) {
       Bot.tweet("I'm posting a tweet!");
     });
 
@@ -62,7 +68,7 @@ Which will return the TwitterBotAction object, or null if the name is invalid (o
 
 Actions are groupable by calling the TwitterBotAction objects group() method
 
-    Bot.addAction("tweet", function(twitter) {
+    Bot.addAction("tweet", function(twitter, action, tweet) {
       Bot.tweet("I'm posting a tweet!");
     }).group("tweet posting");
     
@@ -86,7 +92,7 @@ If you want a random action in a group, you can pass in the group name
 
 If you want to make the randomAction function a little less random, you can give weights to all TwitterBotActions
 
-    Bot.addAction("tweet", function(twitter) {
+    Bot.addAction("tweet", function(twitter, action, tweet) {
       Bot.tweet("I'm posting a tweet!");
     }).group("tweet posting").weight(10);
 
@@ -100,7 +106,7 @@ See more about the TwitterBotAction class here
 
 If you want to watch the Twitter timeline, you can use the built in TwitterBotStreamAction object. One is automatically provided for you as part of the TwitterBot.
 
-    Bot.listen(listenerName, listenerFunction, function(twitter, tweet) {
+    Bot.listen(listenerName, listenerFunction, function(twitter, action, tweet) {
       // Do something with the tweet
     });
     
@@ -117,7 +123,7 @@ By returning true, you'll tell the listen() function to execute the passed callb
 
 For example:
 
-    Bot.listen("listening", tweetThatContainsName, function(twitter, tweet) {
+    Bot.listen("listening", tweetThatContainsName, function(twitter, action, tweet) {
       Bot.now(Bot.randomWeightedAction("reply actions"), tweet);
     });
 
@@ -147,6 +153,17 @@ You can schedule actions into the future by calling
     Bot.schedule("action name", 1000);
     
 Would cause the Bot's "action name" action to be called after 1000 ms (same as setTimeout)
+
+### Rescheduling
+
+Since the second parameter passed into the TwitterBotAction's method is the TwitterBotAction itself, you can call this:
+
+    var tweetAction = Bot.addAction("tweet", function(twitter, action, tweet) {
+      Bot.tweet("I'm posting a tweet!");
+      action.schedule(1000);
+    });
+
+Which would cause the same action to be executed in 1000 ms
 
 ## Credits & Such
 
