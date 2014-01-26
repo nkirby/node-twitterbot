@@ -20,7 +20,7 @@ node-twitterbot handles it's own dependencies for you. It primarily uses:
   
 ## Usage
 
-    var TwitterBot = require("node-twitterbot")
+    var TwitterBot = require("node-twitterbot").TwitterBot
 
 After that, the TwitterBot constructor either needs an object containing the configuration for the Twitter Bot
 
