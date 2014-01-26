@@ -39,6 +39,9 @@ class TwitterBotAction extends eventEmitter
 	weight: (@_weight) ->
 		this
 
+	getWeight: () ->
+		@_weight
+
 ####################################################
 # Scheduling
 
@@ -46,6 +49,6 @@ class TwitterBotAction extends eventEmitter
 		@owner.schedule this, timeout
 
 	now: (tweet) ->
-		@owner.now this tweet
+		@owner.now this, tweet
 
 module.exports.TwitterBotAction = TwitterBotAction

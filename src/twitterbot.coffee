@@ -79,18 +79,26 @@ class TwitterBot extends eventEmitter
 				actions.push action
 		actions
 
-	randomAction: (groupName) ->
-		actions = @allActions groupName
-
-		actionItem = actions[Math.floor(Math.random()*actions.length)]
-		actionItem
-
 	actionWithName: (actionName) ->
 		for action in @actions
 			if action.name is actionName
 				return action
 		null
 
+	randomAction: (groupName) ->
+		actions = @allActions groupName
+
+		actionItem = actions[Math.floor(Math.random()*actions.length)]
+		actionItem
+
+	randomWeightedAction: (groupName) ->
+		weightedActions = [];
+		for action in @actions
+			weight = action.getWeight()
+			for i in [0..weight]
+				weightedActions.push action.name
+
+		weightedActions[Math.floor(Math.random() * weightedActions.length)]
 
 ####################################################
 # Streaming
