@@ -140,7 +140,7 @@ You can create a TwitterBotStreamAction via:
     
 The first parameter of the TwitterBotStreamAction constructor is an action function which won't actually be called (inherited from the standard TwitterBotAction constructor), so you don't need to actually pass anything in.
 
-See more about the TwitterBotStreamAction class here
+See more about the [TwitterBotStreamAction class here](https://github.com/nkirby/node-twitterbot/wiki/TwitterBotStreamAction "TwitterBotStreamAction")
 
 ## Scheduling
 

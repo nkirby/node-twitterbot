@@ -12,19 +12,21 @@ class TwitterBotStreamAction extends TwitterBotAction
 		@streams = {}
 
 		@on "start", () =>
-			@stream = @owner.twitter.stream "statuses/sample"
-			@stream.on "tweet", (tweet) =>
-				for key, value of @streams
-					if value(tweet)
-						@emit "stream-#{key}", @owner.twitter, tweet
-				tweet
-			this
+			@start()
 
 		@on "stop", () =>
 			@stream.stop()
 
+		@stream_path = "statuses/sample"
+
 	start: () ->
-		@emit "start"
+		@stream = @owner.twitter.stream @stream_path
+		@stream.on "tweet", (tweet) =>
+			for key, value of @streams
+				if value(tweet)
+					@emit "stream-#{key}", @owner.twitter, tweet
+			tweet
+		this
 
 	stop: () ->
 		@emit "stop"
@@ -35,4 +37,10 @@ class TwitterBotStreamAction extends TwitterBotAction
 		@on "stream-#{name}", (twitter, tweet) =>
 			action.emit "action", twitter, tweet
 
+	setStreamPath: (@stream_path) ->
+		this
+
+	getStreamPath: () ->
+		@stream_path
+		
 module.exports.TwitterBotStreamAction = TwitterBotStreamAction

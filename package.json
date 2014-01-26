@@ -1,6 +1,6 @@
 {
   "name": "node-twitterbot",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A NodeJS module for creating Twitter Bots",
   "homepage": "http://www.projectspong.com/portfolio-type/nodebitlyapi/",
   "author": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type":"git",
-    "url":"https://github.com/nkirby/node-twitterbot"
+    "url":"https://github.com/nkirbygr/node-twitterbot"
   },
   "bugs": {
     "url":"https://github.com/nkirby/node-twitterbot/issues",
