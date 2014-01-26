@@ -1,0 +1,24 @@
+{
+  "name": "node-twitterbot",
+  "version": "0.0.1",
+  "description": "A NodeJS module for creating Twitter Bots",
+  "homepage": "http://www.projectspong.com/portfolio-type/nodebitlyapi/",
+  "author": {
+    "name": "Nathaniel Kirby",
+    "url":"http://www.projectspong.com",
+    "email":"nate@projectspong.com"
+  },
+  "repository": {
+    "type":"git",
+    "url":"https://github.com/nkirby/node-twitterbot"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-coffee": "~0.8.2",
+    "grunt-banner": "~0.2.0"
+  },
+  "dependencies": {
+    "twit": "~1.1.11"
+  }
+}
