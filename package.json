@@ -12,6 +12,25 @@
     "type":"git",
     "url":"https://github.com/nkirby/node-twitterbot"
   },
+  "bugs": {
+    "url":"https://github.com/nkirby/node-twitterbot/issues",
+    "email":"nate@projectspong.com"
+  },
+  "licenses": [
+    {
+      "type":"MIT",
+      "url": "https://github.com/nkirby/node-twitterbot/blob/master/LICENSE"
+    }
+  ],
+  "main": "lib/twitterbot.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "keywords": [
+  	"twitter",
+  	"bot",
+  ],
+  "readmeFilename": "README.md",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-watch": "~0.5.3",

@@ -2,17 +2,21 @@
 
 A simple way to build Twitter Bots using NodeJS, NPM and a handful of modules
 
+## Installation
+
+It's not on NPM yet, but when it is
+
+    npm install node-twitterbot
+
+### Status
+
+This should be considered a work in progress. It ought to work for you, but if not, please let me know.
+
 ### Dependencies
 
 node-twitterbot handles it's own dependencies for you. It primarily uses:
 
 [Twit](https://github.com/ttezel/twit/ "Twit on Github")
-
-### Installation
-
-It's not on NPM yet, but when it is
-
-    npm install node-twitterbot
   
 ## Usage
 
