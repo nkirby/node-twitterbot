@@ -107,16 +107,16 @@ class TwitterBot extends eventEmitter
 ####################################################
 # Scheduling
 
-	schedule: (action, timeout) ->
+	schedule: (action, timeout, tweet) ->
 		if not timeout
 			return @now action
 
-	now: (action) ->
+	now: (action, tweet) ->
 		if typeof action is "string"
 			action = @actionWithName action
 		else if typeof action is "function"
 			action = new TwitterBotAction callback, this
 
-		action.emit "action", @twitter
+		action.emit "action", @twitter, tweet
 
 module.exports.TwitterBot = TwitterBot

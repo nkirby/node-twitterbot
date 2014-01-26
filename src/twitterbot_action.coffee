@@ -9,11 +9,11 @@ eventEmitter = require('events').EventEmitter
 
 class TwitterBotAction extends eventEmitter
 	constructor: (action, @owner) ->
-		@on "action", (twitter) ->
-			action twitter
+		@on "action", (twitter, tweet) =>
+			action twitter, this, tweet
 		@init()
 		@groups = []
-		@weight = 0
+		@_weight = 0
 
 	init: () ->
 
@@ -36,7 +36,16 @@ class TwitterBotAction extends eventEmitter
 ####################################################
 # Weighting
 
-	weight: (@weight) ->
+	weight: (@_weight) ->
 		this
+
+####################################################
+# Scheduling
+
+	schedule: (timeout, tweet) ->
+		@owner.schedule this, timeout
+
+	now: (tweet) ->
+		@owner.now this tweet
 
 module.exports.TwitterBotAction = TwitterBotAction

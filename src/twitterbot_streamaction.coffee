@@ -32,7 +32,7 @@ class TwitterBotStreamAction extends TwitterBotAction
 	listen: (name, match, callback) ->
 		action = new TwitterBotAction callback, @owner
 		@streams[name] = match
-		@on "stream-#{name}", (params) ->
-			action.emit "action", @owner.twitter, params
+		@on "stream-#{name}", (twitter, tweet) =>
+			action.emit "action", twitter, tweet
 
 module.exports.TwitterBotStreamAction = TwitterBotStreamAction

@@ -118,7 +118,7 @@ By returning true, you'll tell the listen() function to execute the passed callb
 For example:
 
     Bot.listen("listening", tweetThatContainsName, function(twitter, tweet) {
-      Bot.now(Bot.randomWeightedAction("reply actions"));
+      Bot.now(Bot.randomWeightedAction("reply actions"), tweet);
     });
 
 Would cause our TwitterBot to perform some random action in the "reply actions" group, whenever the tweetThatContainsName() function returns true.
